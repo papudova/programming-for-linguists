@@ -9,7 +9,6 @@ import unittest
 from data_structures.stack.stack import Stack
 
 
-@unittest.skip('Stack is not implemented yet')
 class StackTestCase(unittest.TestCase):
     """
     This Case of tests checks the functionality of the implementation of Stack
