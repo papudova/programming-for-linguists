@@ -14,23 +14,28 @@ class Queue_:
     """
 
     # pylint: disable=unused-argument,missing-module-docstring
-    def __init__(self, data: Iterable = (), max_size: int = None):
+    def __init__(self, data: Iterable = (), priorities = (), max_size: int = None):
         self.data = []
+        self.priorities = []
         for element in data:
             self.data.insert(0, element)
+            self.priorities.insert(0, len(self.priorities))
 
-    def put(self, element):
+    def put(self, element, priority):
         """
         Add the element ‘element’ at the end of queue_
         :param element: element to add to queue_
         """
+        self.priorities.insert(0, priority)
         self.data.insert(0, element)
 
     def get(self):
         """
         Remove and return an item from queue_
         """
-        return self.data.pop(-1)
+        prioritized_index = min(self.priorities)
+        self.priorities.pop(prioritized_index)
+        return self.data.pop(prioritized_index)
 
     def empty(self) -> bool:
         """
