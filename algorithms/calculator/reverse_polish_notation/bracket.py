@@ -16,9 +16,13 @@ class OpenBracket(Bracket):
     """
     Interface for open bracket
     """
+    symbol = '('
+    pass
 
 
 class CloseBracket(Bracket):
     """
     Interface for close bracket
     """
+    symbol = ')'
+    pass

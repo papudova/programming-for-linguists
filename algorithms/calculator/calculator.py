@@ -3,7 +3,7 @@ Programming for linguists
 
 Implementation of the Reverse Polish Notation Converter
 """
-from algorithms.calculator.reverse_polish_notation import ReversePolishNotation
+from algorithms.calculator.reverse_polish_notation import ReversePolishNotation, Op
 from data_structures.stack.stack import Stack
 
 
@@ -22,3 +22,12 @@ class ReversePolishNotationCalculator:
         :param rpn_expression: expression in Reverse Polish Notation Format
         :return: result of the expression
         """
+        for element in rpn_expression:
+            if isinstance(element, Op):
+                res = self._calculate_value(element)
+                self.stack.push(res)
+            else:
+                self.stack.push(element)
+        return self.stack.top().digit
+
+
